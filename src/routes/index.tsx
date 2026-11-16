@@ -382,7 +382,7 @@ function DiagnosisPage() {
                           min={0}
                           step={1}
                           aria-label={`${r.platform} ${f.label}`}
-                          aria-invalid={result.platforms[i].errors.length > 0}
+                          aria-invalid={(result.platforms[i]?.errors.length ?? 0) > 0}
                           value={Number.isNaN(r[f.key]) ? "" : r[f.key]}
                           onChange={(e) => updateCell(i, f.key, e.target.value)}
                         />
