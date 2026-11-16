@@ -214,7 +214,7 @@ flowchart TD
 ## 7. 项目链接
 
 - GitHub Repository：https://github.com/1240276725-create/geo-buyer-evidence-studio
-- Live Demo：[在线体验](https://pixel-perfect-snapshot-5512.lovable.app/)
+- Live Demo：[[在线体验](https://pixel-perfect-snapshot-5512.lovable.app/)](https://geo-buyer-evidence-studio.lovable.app/research)
 
 ---
 
