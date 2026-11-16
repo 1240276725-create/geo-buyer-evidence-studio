@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProposalRouteImport } from './routes/proposal'
 import { Route as QuotationRouteImport } from './routes/quotation'
 import { Route as ResearchRouteImport } from './routes/research'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProposalRoute = ProposalRouteImport.update({
+  id: '/proposal',
+  path: '/proposal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const QuotationRoute = QuotationRouteImport.update({
@@ -31,30 +37,34 @@ const ResearchRoute = ResearchRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/proposal': typeof ProposalRoute
   '/quotation': typeof QuotationRoute
   '/research': typeof ResearchRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/proposal': typeof ProposalRoute
   '/quotation': typeof QuotationRoute
   '/research': typeof ResearchRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/proposal': typeof ProposalRoute
   '/quotation': typeof QuotationRoute
   '/research': typeof ResearchRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/quotation' | '/research'
+  fullPaths: '/' | '/proposal' | '/quotation' | '/research'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/quotation' | '/research'
-  id: '__root__' | '/' | '/quotation' | '/research'
+  to: '/' | '/proposal' | '/quotation' | '/research'
+  id: '__root__' | '/' | '/proposal' | '/quotation' | '/research'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ProposalRoute: typeof ProposalRoute
   QuotationRoute: typeof QuotationRoute
   ResearchRoute: typeof ResearchRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/proposal': {
+      id: '/proposal'
+      path: '/proposal'
+      fullPath: '/proposal'
+      preLoaderRoute: typeof ProposalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/quotation': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ProposalRoute: ProposalRoute,
   QuotationRoute: QuotationRoute,
   ResearchRoute: ResearchRoute,
 }
